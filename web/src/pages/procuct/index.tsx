@@ -1,5 +1,11 @@
 import React from 'react';
 
-const Product: React.FC = () => <div>Product</div>;
+import Header from '../../components/header';
+
+const Product: React.FC = () => (
+  <>
+    <Header />
+  </>
+);
 
 export default Product;

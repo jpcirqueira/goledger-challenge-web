@@ -1,5 +1,11 @@
 import React from 'react';
 
-const Seller: React.FC = () => <div>Seller</div>;
+import Header from '../../components/header';
+
+const Seller: React.FC = () => (
+  <>
+    <Header />
+  </>
+);
 
 export default Seller;
