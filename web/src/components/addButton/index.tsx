@@ -9,7 +9,7 @@ interface StoreAddButtonProps {
   name: string;
   route: string;
 }
-// eslint-disable-next-line react/prop-types
+
 const AddButton: React.FC<StoreAddButtonProps> = ({ name, route }) => (
   <>
     <Container>

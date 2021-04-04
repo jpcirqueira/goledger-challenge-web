@@ -1,12 +1,16 @@
 import React from 'react';
 
-import Header from '../../components/header';
 import AddButton from '../../components/addButton';
+import ProductCard from '../../components/productCard';
+
+import { Container } from './styles';
 
 const Product: React.FC = () => (
   <>
-    <Header />
     <AddButton name="New Product" route="addproduct" />
+    <Container>
+      <ProductCard code="401" name="notebook" price="1020.12" />
+    </Container>
   </>
 );
 

@@ -22,7 +22,6 @@ export const TextButton = styled.p`
 
 export const Container = styled.div`
   margin-top: 2%;
-
   width: 100%;
   display: flex;
   justify-content: flex-end;

@@ -28,7 +28,8 @@ export const NavBar = styled.div`
     margin-right: 20px;
     font-size: 16px;
     font-weight: bold;
-    color: #000000;
+    color: #ffff;
+    text-decoration: none;
     &.active {
       color: #34495e;
     }
