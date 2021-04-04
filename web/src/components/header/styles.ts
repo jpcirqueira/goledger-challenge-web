@@ -30,7 +30,7 @@ export const NavBar = styled.div`
     font-weight: bold;
     color: #000000;
     &.active {
-      color: #ecf0f1;
+      color: #34495e;
     }
   }
 `;
