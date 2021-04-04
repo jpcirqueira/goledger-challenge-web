@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
-
+import { AxiosRequestConfig } from 'axios';
 import AddButton from '../../components/addButton';
 import ProductCard from '../../components/productCard';
 import api from '../../services/api';
@@ -17,7 +17,7 @@ const Product: React.FC = () => {
         },
       },
     };
-    api.post('query/search', body).then((res: any) => {
+    api.post('query/search', body).then((res: AxiosRequestConfig) => {
       setProducts(res.data.result);
     });
   }, []);

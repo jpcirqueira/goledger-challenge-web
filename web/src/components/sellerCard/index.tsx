@@ -7,44 +7,47 @@ import api from '../../services/api';
 import history from '../../services/history';
 import { Card, Actions } from './styles';
 
-interface StoreProductCardProps {
-  code: string;
+interface StoreSellerCardProps {
   name: string;
-  price: string;
+  adress: string;
+  cnpj: string;
+  date: string;
 }
 
-const ProductCard: React.FC<StoreProductCardProps> = ({
-  code,
+const SellerCard: React.FC<StoreSellerCardProps> = ({
   name,
-  price,
+  adress,
+  cnpj,
+  date,
 }) => {
   const data = {
     key: {
       '@assetType': 'product',
-      code,
+      cnpj,
     },
   };
-  function excludProduct() {
+  function excludSeller() {
     api
       .delete('invoke/deleteAsset', { data })
       .then((res: AxiosRequestConfig) => {
-        alert(`exclude product: ${res.data.code}`);
+        alert(`exclude seller: ${res.data.code}`);
       });
   }
-  function editProduct() {
-    history.push('/editproduct');
+  function editSeller() {
+    history.push('/editseller');
   }
 
   return (
     <Card>
       <Actions>
-        <MdModeEdit size={30} onClick={() => editProduct()} />
-        <MdDelete size={30} onClick={() => excludProduct()} />
+        <MdModeEdit size={30} onClick={() => editSeller()} />
+        <MdDelete size={30} onClick={() => excludSeller()} />
       </Actions>
-      <h2>{`code:  ${code}`}</h2>
       <h2>{`name:  ${name}`}</h2>
-      <h2>{`price:  ${price}`}</h2>
+      <h2>{`cnpj:  ${cnpj}`}</h2>
+      <h2>{`adress:  ${adress}`}</h2>
+      <h2>{`date:  ${date}`}</h2>
     </Card>
   );
 };
-export default ProductCard;
+export default SellerCard;
