@@ -24,8 +24,8 @@ const Header: React.FC = () => {
                 Seller
               </a>
               <a
-                href="/categories"
-                className={pathname === '/categories' ? 'active' : ''}
+                href="/category"
+                className={pathname === '/category' ? 'active' : ''}
               >
                 Categories
               </a>
