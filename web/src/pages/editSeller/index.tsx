@@ -38,7 +38,7 @@ const EditSeller: React.FC = () => {
         dateJoined,
       },
     };
-    api.post('invoke/updateAsset', data).then(() => {
+    api.put('invoke/updateAsset', data).then(() => {
       alert('updated seller');
       history.push('/seller');
     });

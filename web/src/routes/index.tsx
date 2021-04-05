@@ -8,6 +8,7 @@ import AddSeller from '../pages/addSeller';
 import AddProduct from '../pages/addProduct';
 import AddCategory from '../pages/addCategory';
 import EditSeller from '../pages/editSeller';
+import EditProduct from '../pages/editproduct';
 
 const Routes: React.FC = () => (
   <Switch>
@@ -18,6 +19,7 @@ const Routes: React.FC = () => (
     <Route path="/addproduct" component={AddProduct} />
     <Route path="/addcategory" component={AddCategory} />
     <Route path="/editseller" component={EditSeller} />
+    <Route path="/editproduct" component={EditProduct} />
   </Switch>
 );
 
