@@ -1,31 +1,49 @@
 # GoLedger Challenge
 
-In this challenge you will create a web interface to a blockchain application. 
-In this application you must implement a marketplace registration interface.
+In this challenge you will create a web interface to a blockchain application. In this application you must implement a marketplace registration interface.
 
-# Requirements
+## Overview
 
-- Your application should be able to add/remove/edit and show all products, categories and sellers.
+### Product
 
-- Use JavaScript Frameworks for development, such as **Vue** and **React** (all UI libraries are allowed)
+![overviwe product](product.gif)
 
-## Instructions
+### Category
 
-- Fork the repository https://github.com/goledgerdev/goledger-challenge-web
+![overviwe category](category.gif)
 
-  - Fork it, do **NOT** clone it, since you will need to send us your forked repository
-  - If you **cannot** fork it, create a private repository and give access to `samuelvenzi`, `igor-paiva` and `vieiramanoel` 
+### Seller
 
-- Create an web application using a JS Framework. You will implement the basic operations provided by the API, which are `Create`, `Update`, `Delete` and `Search`.
+![overviwe seller](seller.gif)
 
-- Improve your application with a beautiful UI.
+## How to run
+1. Clone the repository
+```
+git clone https://github.com/jpcirqueira/goledger-challenge-web
+```
+2. Enter the directory
+```
+cd goledger-challenge-web/web/
+```
+3. Install dependecies
+```
+yarn
+```
+4. Run application
+```
+sudo yarn start
+```
 
-## Server
+## Some used technologies
 
-The data are obtained using a rest server at this address: `http://ec2-54-173-117-139.compute-1.amazonaws.com/api/`
-
-Also, a Swagger with the endpoints specifications for the operations is provided at this address: `http://ec2-54-173-117-139.compute-1.amazonaws.com/api-docs/`
-
-## Complete the challenge
-
-To complete the challenge, you must send us the link to your forked repository with the code of your application. Please, provide instructions to execute the code.
+- React
+- typescript
+- styled-components
+- history
+- react-router-dom
+- yup
+- moment
+- react-icons
+- Prop-types
+- eslint
+- prettier
