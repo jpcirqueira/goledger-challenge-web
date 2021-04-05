@@ -7,6 +7,14 @@ export const Container = styled.div`
 export const Imput = styled.input`
   width: 100%;
   height: 100%;
+  padding: 6px;
+  outline: 0;
+  border: none;
+  border-radius: 4px;
+  &:focus {
+    /* border-color: #34495e; */
+    border: 1px solid #34495e;
+  }
 `;
 
 export const Form = styled.form`

@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
 import { AxiosRequestConfig } from 'axios';
+import moment from 'moment';
 import AddButton from '../../components/addButton';
 import SellerCard from '../../components/sellerCard';
 import api from '../../services/api';
@@ -49,8 +50,8 @@ const Seller: React.FC = () => {
             key={prod.key}
             name={prod.name}
             cnpj={prod.cnpj}
-            adress={prod.adress}
-            date={prod.dateJoined}
+            address={prod.address}
+            date={moment(prod.dateJoined).format('MMMM Do YYYY, h:mm:ss a')}
             exclude={() => excludeSeller(prod.cnpj)}
           />
         ))}

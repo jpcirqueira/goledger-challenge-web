@@ -7,7 +7,7 @@ import { Card, Actions } from './styles';
 
 interface StoreSellerCardProps {
   name: string;
-  adress: string;
+  address: string;
   cnpj: string;
   date: string;
   exclude(): void;
@@ -15,7 +15,7 @@ interface StoreSellerCardProps {
 
 const SellerCard: React.FC<StoreSellerCardProps> = ({
   name,
-  adress,
+  address,
   cnpj,
   date,
   exclude,
@@ -34,7 +34,7 @@ const SellerCard: React.FC<StoreSellerCardProps> = ({
       </Actions>
       <h2>{`name:  ${name}`}</h2>
       <h2>{`cnpj:  ${cnpj}`}</h2>
-      <h2>{`adress:  ${adress}`}</h2>
+      <h2>{`address:  ${address}`}</h2>
       <h2>{`date:  ${date}`}</h2>
     </Card>
   );
