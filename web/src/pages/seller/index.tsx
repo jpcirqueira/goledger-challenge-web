@@ -34,8 +34,8 @@ const Seller: React.FC = () => {
     };
     api
       .delete('invoke/deleteAsset', { data })
-      .then((res: AxiosRequestConfig) => {
-        alert(`exclude seller: ${res.data}`);
+      .then(() => {
+        alert('exclude seller');
         setSellers((state) => state.filter((item: any) => item.cnpj !== cnpj));
       }).catch(() => {
         alert('error when delete seller');

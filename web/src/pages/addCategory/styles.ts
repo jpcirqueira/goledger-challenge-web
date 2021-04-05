@@ -25,6 +25,7 @@ export const Form = styled.form`
   grid-gap: 20px;
   justify-content: center;
   border-radius: 4px;
+  align-items: center;
 `;
 export const Button = styled.button`
   background: #4267b2;

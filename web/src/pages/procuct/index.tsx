@@ -34,8 +34,8 @@ const Product: React.FC = () => {
 
     api
       .delete('invoke/deleteAsset', { data })
-      .then((res: AxiosRequestConfig) => {
-        alert(`exclude product: ${res.data}`);
+      .then(() => {
+        alert('exclude product');
         setProducts(state => state.filter((item: any) => item.code !== code));
       })
       .catch(() => {

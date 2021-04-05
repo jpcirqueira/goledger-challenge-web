@@ -33,8 +33,8 @@ const Category: React.FC = () => {
     };
     api
       .delete('invoke/deleteAsset', { data })
-      .then((res: AxiosRequestConfig) => {
-        alert(`exclude category: ${res.data.code}`);
+      .then(() => {
+        alert('exclude category');
         setCategories((state) => state.filter((item: any) => item.name !== name));
       })
       .catch(() => {

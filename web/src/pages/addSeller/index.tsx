@@ -3,6 +3,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import moment from 'moment';
 
 import { useHistory } from 'react-router-dom';
 import api from '../../services/api';
@@ -22,10 +23,11 @@ const AddSeller: React.FC = () => {
     name: Yup.string().required(),
     cnpj: Yup.string().required(),
     adress: Yup.string().required(),
-    dateJoined: Yup.string(),
   });
 
   function handleSubmit(values: any) {
+    const datatime = moment(new Date()).format();
+
     const data = {
       asset: [
         {
@@ -33,7 +35,7 @@ const AddSeller: React.FC = () => {
           cnpj: values.cnpj,
           name: values.name,
           address: values.adress,
-          dateJoined: values.dateJoined,
+          dateJoined: datatime,
         },
       ],
     };
@@ -48,7 +50,6 @@ const AddSeller: React.FC = () => {
       name: '',
       cnpj: '',
       adress: '',
-      dateJoined: '',
     },
     enableReinitialize: true,
     validationSchema: SCHEMA,
@@ -77,12 +78,6 @@ const AddSeller: React.FC = () => {
             placeholder="Adress"
             value={formik.values.adress}
             onChange={formik.handleChange('adress')}
-          />
-
-          <Imput
-            placeholder="dateJoined"
-            value={formik.values.dateJoined}
-            onChange={formik.handleChange('dateJoined')}
           />
 
           <ButtonContainer>
