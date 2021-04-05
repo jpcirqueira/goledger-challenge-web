@@ -4,7 +4,7 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import { AxiosRequestConfig } from 'axios';
+import history from '../../services/history';
 import api from '../../services/api';
 // eslint-disable-next-line prettier/prettier
 import {
@@ -44,8 +44,9 @@ const AddProduct: React.FC = () => {
         },
       ],
     };
-    api.post('invoke/createAsset', data).then((res: AxiosRequestConfig) => {
-      alert(`create product: ${res.data}`);
+    api.post('invoke/createAsset', data).then(() => {
+      alert('create product');
+      history.push('/product');
     });
   }
 

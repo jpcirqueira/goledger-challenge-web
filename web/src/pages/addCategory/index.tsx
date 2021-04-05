@@ -16,38 +16,29 @@ import {
   Form,
 } from './styles';
 
-const AddSeller: React.FC = () => {
+const AddCategory: React.FC = () => {
   const SCHEMA = Yup.object().shape({
     name: Yup.string().required(),
-    cnpj: Yup.string().required(),
-    adress: Yup.string().required(),
-    dateJoined: Yup.string(),
   });
 
   function handleSubmit(values: any) {
     const data = {
       asset: [
         {
-          '@assetType': 'seller',
-          cnpj: values.cnpj,
+          '@assetType': 'category',
           name: values.name,
-          address: values.adress,
-          dateJoined: values.dateJoined,
         },
       ],
     };
     api.post('invoke/createAsset', data).then(() => {
-      alert('create product');
-      history.push('/seller');
+      alert('create category');
+      history.push('/category');
     });
   }
 
   const formik = useFormik({
     initialValues: {
       name: '',
-      cnpj: '',
-      adress: '',
-      dateJoined: '',
     },
     enableReinitialize: true,
     validationSchema: SCHEMA,
@@ -60,29 +51,10 @@ const AddSeller: React.FC = () => {
       <Container>
         <Form onSubmit={formik.handleSubmit}>
           <Imput
-            placeholder="Name"
+            placeholder="Name Category"
             value={formik.values.name}
             onChange={formik.handleChange('name')}
           />
-
-          <Imput
-            placeholder="Cnpj"
-            value={formik.values.cnpj}
-            onChange={formik.handleChange('cnpj')}
-          />
-
-          <Imput
-            placeholder="Adress"
-            value={formik.values.adress}
-            onChange={formik.handleChange('adress')}
-          />
-
-          <Imput
-            placeholder="dateJoined"
-            value={formik.values.dateJoined}
-            onChange={formik.handleChange('dateJoined')}
-          />
-
           <ButtonContainer>
             <Button type="submit">
               <TextButton>Register</TextButton>
@@ -93,4 +65,4 @@ const AddSeller: React.FC = () => {
     </>
   );
 };
-export default AddSeller;
+export default AddCategory;
