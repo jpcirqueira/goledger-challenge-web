@@ -22,7 +22,7 @@ const SellerCard: React.FC<StoreSellerCardProps> = ({
 }) => {
   const data = {
     key: {
-      '@assetType': 'product',
+      '@assetType': 'seller',
       cnpj,
     },
   };
@@ -30,7 +30,7 @@ const SellerCard: React.FC<StoreSellerCardProps> = ({
     api
       .delete('invoke/deleteAsset', { data })
       .then((res: AxiosRequestConfig) => {
-        alert(`exclude seller: ${res.data.code}`);
+        alert(`exclude seller: ${res.data}`);
       });
   }
   function editSeller() {

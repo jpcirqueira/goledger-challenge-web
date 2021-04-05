@@ -28,7 +28,7 @@ const ProductCard: React.FC<StoreProductCardProps> = ({
     api
       .delete('invoke/deleteAsset', { data })
       .then((res: AxiosRequestConfig) => {
-        alert(`exclude product: ${res.data.code}`);
+        alert(`exclude product: ${res.data}`);
       });
   }
   function editProduct() {

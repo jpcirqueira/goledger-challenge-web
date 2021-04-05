@@ -20,7 +20,7 @@ const Seller: React.FC = () => {
     api.post('query/search', body).then((res: AxiosRequestConfig) => {
       setSellers(res.data.result);
     });
-  }, [sellers]);
+  }, []);
 
   return (
     <>
@@ -32,7 +32,7 @@ const Seller: React.FC = () => {
             name={prod.name}
             cnpj={prod.cnpj}
             adress={prod.adress}
-            date={prod.date}
+            date={prod.dateJoined}
           />
         ))}
       </Container>
