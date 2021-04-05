@@ -2,7 +2,6 @@
 import React from 'react';
 import { MdModeEdit, MdDelete } from 'react-icons/md';
 
-import { useHistory } from 'react-router-dom';
 import { Card, Actions } from './styles';
 
 interface StoreSellerCardProps {
@@ -11,6 +10,7 @@ interface StoreSellerCardProps {
   cnpj: string;
   date: string;
   exclude(): void;
+  edit(): void;
 }
 
 const SellerCard: React.FC<StoreSellerCardProps> = ({
@@ -19,24 +19,17 @@ const SellerCard: React.FC<StoreSellerCardProps> = ({
   cnpj,
   date,
   exclude,
-}) => {
-  const history = useHistory();
-
-  function editSeller() {
-    history.push('/editseller');
-  }
-
-  return (
-    <Card>
-      <Actions>
-        <MdModeEdit size={30} onClick={() => editSeller()} />
-        <MdDelete size={30} onClick={() => exclude()} />
-      </Actions>
-      <h2>{`name:  ${name}`}</h2>
-      <h2>{`cnpj:  ${cnpj}`}</h2>
-      <h2>{`address:  ${address}`}</h2>
-      <h2>{`date:  ${date}`}</h2>
-    </Card>
-  );
-};
+  edit,
+}) => (
+  <Card>
+    <Actions>
+      <MdModeEdit size={30} onClick={() => edit()} />
+      <MdDelete size={30} onClick={() => exclude()} />
+    </Actions>
+    <h2>{`name:  ${name}`}</h2>
+    <h2>{`cnpj:  ${cnpj}`}</h2>
+    <h2>{`address:  ${address}`}</h2>
+    <h2>{`date:  ${date}`}</h2>
+  </Card>
+);
 export default SellerCard;

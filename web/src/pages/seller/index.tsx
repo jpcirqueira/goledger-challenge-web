@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
 import { AxiosRequestConfig } from 'axios';
+import { useHistory } from 'react-router-dom';
 import moment from 'moment';
 import AddButton from '../../components/addButton';
 import SellerCard from '../../components/sellerCard';
@@ -11,7 +12,7 @@ import { Container } from './styles';
 
 const Seller: React.FC = () => {
   const [sellers, setSellers] = useState([]);
-
+  const history = useHistory();
   useEffect(() => {
     const body = {
       query: {
@@ -24,6 +25,10 @@ const Seller: React.FC = () => {
       setSellers(res.data.result);
     });
   }, []);
+
+  function editSeller(prod: any) {
+    history.push('/editseller', { data: prod });
+  }
 
   function excludeSeller(cnpj: string) {
     const data = {
@@ -53,6 +58,7 @@ const Seller: React.FC = () => {
             address={prod.address}
             date={moment(prod.dateJoined).format('MMMM Do YYYY, h:mm:ss a')}
             exclude={() => excludeSeller(prod.cnpj)}
+            edit={() => editSeller(prod)}
           />
         ))}
       </Container>

@@ -3,6 +3,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
 import { AxiosRequestConfig } from 'axios';
+import { useHistory } from 'react-router-dom';
+
 import AddButton from '../../components/addButton';
 import ProductCard from '../../components/productCard';
 import api from '../../services/api';
@@ -10,6 +12,7 @@ import { Container } from './styles';
 
 const Product: React.FC = () => {
   const [products, setProducts] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     const body = {
@@ -23,6 +26,10 @@ const Product: React.FC = () => {
       setProducts(res.data.result);
     });
   }, []);
+
+  function editProduct(prod: any) {
+    history.push('/editproduct', { date: prod });
+  }
 
   function excludeProduct(code: string) {
     const data = {
@@ -53,6 +60,7 @@ const Product: React.FC = () => {
             name={prod.name}
             price={prod.price}
             exclude={() => excludeProduct(prod.code)}
+            edit={() => editProduct(prod)}
           />
         ))}
       </Container>
