@@ -58,7 +58,7 @@ const EditProduct: React.FC = () => {
   return (
     <Container>
       <Form onSubmit={formik.handleSubmit}>
-        <h2>Updated Product</h2>
+        <h2>Update Product</h2>
         <Imput
           placeholder="Code"
           value={formik.values.code}

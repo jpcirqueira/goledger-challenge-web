@@ -40,7 +40,7 @@ const AddSeller: React.FC = () => {
       ],
     };
     api.post('invoke/createAsset', data).then(() => {
-      alert('create product');
+      alert('create seller');
       history.push('/seller');
     });
   }
