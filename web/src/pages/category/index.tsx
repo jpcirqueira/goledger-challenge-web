@@ -3,7 +3,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
 import { AxiosRequestConfig } from 'axios';
-import { useHistory } from 'react-router-dom';
 import AddButton from '../../components/addButton';
 import CategoryCard from '../../components/categoryCard';
 import api from '../../services/api';
@@ -11,7 +10,6 @@ import { Container } from './styles';
 
 const Category: React.FC = () => {
   const [categories, setCategories] = useState([]);
-  const history = useHistory();
 
   useEffect(() => {
     const body = {
@@ -25,10 +23,6 @@ const Category: React.FC = () => {
       setCategories(res.data.result);
     });
   }, []);
-
-  function editCategory(name: string) {
-    history.push('/editcategory', { data: name });
-  }
 
   function excludeCategory(name: string) {
     const data = {
@@ -55,7 +49,6 @@ const Category: React.FC = () => {
           <CategoryCard
             name={prod.name}
             exclude={() => excludeCategory(prod.name)}
-            edit={() => editCategory(prod.name)}
           />
         ))}
       </Container>
