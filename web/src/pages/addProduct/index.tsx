@@ -4,7 +4,7 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import history from '../../services/history';
+import { useHistory } from 'react-router-dom';
 import api from '../../services/api';
 // eslint-disable-next-line prettier/prettier
 import {
@@ -17,6 +17,7 @@ import {
 } from './styles';
 
 const AddProduct: React.FC = () => {
+  const history = useHistory();
   const SCHEMA = Yup.object().shape({
     code: Yup.string().required(),
     name: Yup.string().required(),
@@ -46,7 +47,7 @@ const AddProduct: React.FC = () => {
     };
     api.post('invoke/createAsset', data).then(() => {
       alert('create product');
-      history.push('/product');
+      history.push('/');
     });
   }
 
@@ -65,46 +66,45 @@ const AddProduct: React.FC = () => {
     },
   });
   return (
-    <>
-      <Container>
-        <Form onSubmit={formik.handleSubmit}>
-          <Imput
-            placeholder="Code"
-            value={formik.values.code}
-            onChange={formik.handleChange('code')}
-          />
-          <Imput
-            placeholder="Name"
-            value={formik.values.name}
-            onChange={formik.handleChange('name')}
-          />
+    <Container>
+      <Form onSubmit={formik.handleSubmit}>
+        <h2>Create Product</h2>
+        <Imput
+          placeholder="Code"
+          value={formik.values.code}
+          onChange={formik.handleChange('code')}
+        />
+        <Imput
+          placeholder="Name"
+          value={formik.values.name}
+          onChange={formik.handleChange('name')}
+        />
 
-          <Imput
-            placeholder="Price"
-            value={formik.values.price}
-            onChange={formik.handleChange('price')}
-          />
+        <Imput
+          placeholder="Price"
+          value={formik.values.price}
+          onChange={formik.handleChange('price')}
+        />
 
-          <Imput
-            placeholder="seller cnpj"
-            value={formik.values.seller}
-            onChange={formik.handleChange('seller')}
-          />
+        <Imput
+          placeholder="seller cnpj"
+          value={formik.values.seller}
+          onChange={formik.handleChange('seller')}
+        />
 
-          <Imput
-            placeholder="Name Category"
-            value={formik.values.category}
-            onChange={formik.handleChange('category')}
-          />
+        <Imput
+          placeholder="Name Category"
+          value={formik.values.category}
+          onChange={formik.handleChange('category')}
+        />
 
-          <ButtonContainer>
-            <Button type="submit">
-              <TextButton>Register</TextButton>
-            </Button>
-          </ButtonContainer>
-        </Form>
-      </Container>
-    </>
+        <ButtonContainer>
+          <Button type="submit">
+            <TextButton>Register</TextButton>
+          </Button>
+        </ButtonContainer>
+      </Form>
+    </Container>
   );
 };
 export default AddProduct;

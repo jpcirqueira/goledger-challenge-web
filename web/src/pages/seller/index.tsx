@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
 import { AxiosRequestConfig } from 'axios';
@@ -22,6 +24,22 @@ const Seller: React.FC = () => {
     });
   }, []);
 
+  function excludeSeller(cnpj: string) {
+    const data = {
+      key: {
+        '@assetType': 'seller',
+        cnpj,
+      },
+    };
+    api
+      .delete('invoke/deleteAsset', { data })
+      .then((res: AxiosRequestConfig) => {
+        alert(`exclude seller: ${res.data}`);
+        setSellers((state) => state.filter((item: any) => item.cnpj !== cnpj));
+      }).catch(() => {
+        alert('error when delete seller');
+      });
+  }
   return (
     <>
       <AddButton name="New Seller" route="addseller" />
@@ -33,6 +51,7 @@ const Seller: React.FC = () => {
             cnpj={prod.cnpj}
             adress={prod.adress}
             date={prod.dateJoined}
+            exclude={() => excludeSeller(prod.cnpj)}
           />
         ))}
       </Container>

@@ -16,6 +16,7 @@ export const Title = styled.h1`
   font-size: 20px;
   font-weight: bold;
   margin-left: 2%;
+  color: #fff;
 `;
 
 export const NavBar = styled.div`
@@ -28,7 +29,7 @@ export const NavBar = styled.div`
     margin-right: 20px;
     font-size: 16px;
     font-weight: bold;
-    color: #ffff;
+    color: #fff;
     text-decoration: none;
     &.active {
       color: #34495e;

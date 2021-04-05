@@ -1,10 +1,8 @@
 /* eslint-disable no-alert */
 import React from 'react';
 import { MdModeEdit, MdDelete } from 'react-icons/md';
-import { AxiosRequestConfig } from 'axios';
 
-import api from '../../services/api';
-import history from '../../services/history';
+import { useHistory } from 'react-router-dom';
 import { Card, Actions } from './styles';
 
 interface StoreSellerCardProps {
@@ -12,6 +10,7 @@ interface StoreSellerCardProps {
   adress: string;
   cnpj: string;
   date: string;
+  exclude(): void;
 }
 
 const SellerCard: React.FC<StoreSellerCardProps> = ({
@@ -19,20 +18,10 @@ const SellerCard: React.FC<StoreSellerCardProps> = ({
   adress,
   cnpj,
   date,
+  exclude,
 }) => {
-  const data = {
-    key: {
-      '@assetType': 'seller',
-      cnpj,
-    },
-  };
-  function excludSeller() {
-    api
-      .delete('invoke/deleteAsset', { data })
-      .then((res: AxiosRequestConfig) => {
-        alert(`exclude seller: ${res.data}`);
-      });
-  }
+  const history = useHistory();
+
   function editSeller() {
     history.push('/editseller');
   }
@@ -41,7 +30,7 @@ const SellerCard: React.FC<StoreSellerCardProps> = ({
     <Card>
       <Actions>
         <MdModeEdit size={30} onClick={() => editSeller()} />
-        <MdDelete size={30} onClick={() => excludSeller()} />
+        <MdDelete size={30} onClick={() => exclude()} />
       </Actions>
       <h2>{`name:  ${name}`}</h2>
       <h2>{`cnpj:  ${cnpj}`}</h2>

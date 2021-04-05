@@ -4,7 +4,7 @@ import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-import history from '../../services/history';
+import { useHistory } from 'react-router-dom';
 import api from '../../services/api';
 // eslint-disable-next-line prettier/prettier
 import {
@@ -17,6 +17,7 @@ import {
 } from './styles';
 
 const AddSeller: React.FC = () => {
+  const history = useHistory();
   const SCHEMA = Yup.object().shape({
     name: Yup.string().required(),
     cnpj: Yup.string().required(),
@@ -59,6 +60,7 @@ const AddSeller: React.FC = () => {
     <>
       <Container>
         <Form onSubmit={formik.handleSubmit}>
+          <h2>Create Seller</h2>
           <Imput
             placeholder="Name"
             value={formik.values.name}

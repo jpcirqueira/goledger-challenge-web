@@ -19,4 +19,9 @@ export const Card = styled.div`
   background: #dcdcdc;
   padding: 15px 15px 40px;
   position: relative;
+  h2 {
+    &:first-child {
+      max-width: 200px;
+    }
+  }
 `;

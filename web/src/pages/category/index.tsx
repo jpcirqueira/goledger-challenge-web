@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-alert */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
 import { AxiosRequestConfig } from 'axios';
@@ -22,12 +24,32 @@ const Category: React.FC = () => {
     });
   }, []);
 
+  function excludeCategory(name: string) {
+    const data = {
+      key: {
+        '@assetType': 'category',
+        name,
+      },
+    };
+    api
+      .delete('invoke/deleteAsset', { data })
+      .then((res: AxiosRequestConfig) => {
+        alert(`exclude category: ${res.data.code}`);
+        setCategories((state) => state.filter((item: any) => item.name !== name));
+      })
+      .catch(() => {
+        alert('error when delete category');
+      });
+  }
   return (
     <>
       <AddButton name="New Category" route="addcategory" />
       <Container>
         {categories.map((prod: any) => (
-          <CategoryCard name={prod.name} />
+          <CategoryCard
+            name={prod.name}
+            exclude={() => excludeCategory(prod.name)}
+          />
         ))}
       </Container>
     </>

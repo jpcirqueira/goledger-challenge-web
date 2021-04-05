@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable arrow-parens */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
 import { AxiosRequestConfig } from 'axios';
@@ -22,6 +24,24 @@ const Product: React.FC = () => {
     });
   }, []);
 
+  function excludeProduct(code: string) {
+    const data = {
+      key: {
+        '@assetType': 'product',
+        code,
+      },
+    };
+
+    api
+      .delete('invoke/deleteAsset', { data })
+      .then((res: AxiosRequestConfig) => {
+        alert(`exclude product: ${res.data}`);
+        setProducts(state => state.filter((item: any) => item.code !== code));
+      })
+      .catch(() => {
+        alert('error when delete product');
+      });
+  }
   return (
     <>
       <AddButton name="New Product" route="addproduct" />
@@ -32,6 +52,7 @@ const Product: React.FC = () => {
             code={prod.code}
             name={prod.name}
             price={prod.price}
+            exclude={() => excludeProduct(prod.code)}
           />
         ))}
       </Container>
